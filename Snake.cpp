@@ -1,8 +1,10 @@
 #include "Snake.hpp"
 
-Segment::Segment(int x, int y) {
+Segment::Segment(int x, int y, Direction dir, Segment* next) {
     this->x = x;
     this->y = y;
+    this->dir = dir;
+    this->next = next;
 }
 
 Segment::~Segment() {
@@ -18,7 +20,7 @@ Direction Segment::GetDir() {
 }
 
 Segment* Segment::GetNext() {
-    return this->next;
+    return next;
 }
 
 int Segment::GetX() {
@@ -29,10 +31,24 @@ int Segment::GetY() {
     return y;
 }
 
+int Segment::AddX() {
+    return x += x;
+}
+
+int Segment::AddY() {
+    return y += y;
+}
+
+int Segment::RemX() {
+    return x -= x;
+}
+
+int Segment::RemY() {
+    return y -= y;
+}
+
 Snake::Snake(int x, int y, Direction dir) {
-    this->x = x;
-    this->y = y;
-    this->dir = dir;
+    head = new Segment(x, y, dir, NULL);
 }
 
 Snake::~Snake() {
@@ -65,19 +81,19 @@ void Snake::Move() {
 	{
 
 	case UP:    
-        this->y--; 
+        head->RemY(); 
         break;
 
 	case DOWN:  
-        this->y++; 
+        head->AddY();  
         break;
 
 	case LEFT:  
-        this->x--; 
+        head->RemX();  
         break;
 
 	case RIGHT: 
-        this->x++; 
+        head->AddX();  
         break;
 
 	}

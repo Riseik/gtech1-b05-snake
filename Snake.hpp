@@ -1,4 +1,3 @@
-#pragma once
 #include <SDL2/SDL.h>
 
 typedef enum { 
@@ -7,13 +6,17 @@ typedef enum {
 
 class Segment {
 public:
-  Segment(int x, int y);
+  Segment(int x, int y, Direction dir, Segment* next);
   ~Segment();
   void SetDir(Direction dir);
   Direction GetDir();
   Segment* GetNext();
   int GetX();
   int GetY();
+  int AddX();
+  int AddY();
+  int RemX();
+  int RemY();
 private:
   Direction dir;
   Segment *next;

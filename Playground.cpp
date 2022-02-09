@@ -1,20 +1,21 @@
 #include "Playground.hpp"
 
 Playground::Playground(int nbrow, int nbcol) {
-   this->nbrow;
-   this->nbcol;
-   this->renderer;
+   this->nbrow = nbrow;
+   this->nbcol = nbcol;
 }
 
 Playground::~Playground() {
     
 }
 
-int Playground::Init() {
+int Playground::Init(SDL_Renderer* renderer) {
     int Color = 0;
-    for (nbrow = 0; nbrow < 10; nbrow += 1)
+    int row;
+    int col;
+    for (row = 0; row < nbrow; row ++)
     {
-        for (nbcol = 0; nbcol < 10; nbcol += 1)
+        for (col = 0; col < nbcol; col ++)
         {
             if (Color == 0)
             {
@@ -28,13 +29,14 @@ int Playground::Init() {
             }
 
             SDL_Rect rectangle;
-            rectangle.w = 60;
-            rectangle.h = 60;
-            rectangle.x = nbrow;
-            rectangle.y = nbcol;
+            rectangle.w = 30;
+            rectangle.h = 30;
+            rectangle.x = row;
+            rectangle.y = col;
 
             SDL_RenderFillRect(renderer, &rectangle);
         }
     }
+    return 0;
 }
 
