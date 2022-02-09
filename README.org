@@ -1,0 +1,54 @@
+#+title: Projet#7 #gtech1-b05-snake en C++ sous Linux 
+
+** Participant du projet 
+ - Ethan Maillard : https://github.com/Riseik
+ - Keryan Lucas : https://github.com/Kurlox
+ - Kévin Terrisson : https://github.com/KevinTerrisson
+ 
+** Qu'est ce qu'un snake ? :
+  Le jeu snake est un jeu ou le joueur incarne un serpent glouton voulant manger des fruit a tout prix. Seulement ces dernier le font grossir, 
+  devenant de plus en plus gros il fini par se géner. Cette gène ne le dérange pas plus que ca et continue ca course vers la norriture jusqu'a se marcher 
+  dessue et mourir.
+
+** Outils à installer
+  #+BEGIN_SRC sh
+    sudo apt-get update
+    sudo apt-get install man make g++ libsdl2-dev libsdl2-image-dev install x11-utils
+  #+END_SRC$
+  
+ - Utilisation:
+
+ - Configuration permamente, *à faire une seule fois*:
+
+  #+BEGIN_SRC sh
+   echo "export DISPLAY=:0" >> ~/.bashrc
+   source ~/.bashrc
+  #+END_SRC
+  
+** Comment lancer le jeu ? :
+  - Pour lancer le jeux il faut compiler le jeu avec la commande suivante :
+    #+BEGIN_SRC sh 
+    g++ main.cpp MainSDLWindow.cpp Snake.cpp -lSDL2 -o snake && DYSPLAY=:0 ./snake
+    #+END_SRC
+  - Et lancer  le jeu avec la comande :
+    =./main=
+    
+** Comment jouer ? :
+  Pour jouer à ce jeu, nous utilisons les fleches directionnelle du clavier :
+    - Nous utilisons la flèche -> , pour aller vers la droite de l'écran
+    - Nous utilisons la flèche <- , pour aller vers la gauche de l'écran
+    - Nous utilisons la flèche décendante , pour aller bas la droite de l'écran
+    - Nous utilisons la flèche montatente, pour aller vers le haut de l'écran
+    - Quand vous perdez, la fenêtre se ferme, ce qui fait que vous devez relancer le jeu pour pouvoir refaire une partie
+    - /!\ Attention a ne pas toucher les mur car ceux ci vont causer votre perte.
+  
+** Ressources
+*** Langage C++
+ - Wikibook: [[https://fr.wikibooks.org/wiki/Programmation_C++][https://fr.wikibooks.org/wiki/Programmation_C++]]
+ - Référence: https://en.cppreference.com/w/
+
+*** Librairie SDL2
+ - Homepage SDL2: http://libsdl.org/
+ 
+*** Linux version 
+  - version 11.1
