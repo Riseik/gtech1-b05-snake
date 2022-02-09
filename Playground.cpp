@@ -1,6 +1,7 @@
 #include "Playground.hpp"
+#include "constants.h"
 
-Playground::Playground(int nbrow, int nbcol) {
+Playground::Playground() {
    this->nbrow = nbrow;
    this->nbcol = nbcol;
 }
@@ -15,24 +16,21 @@ int Playground::Init(int nbrow, int nbcol, SDL_Renderer* renderer) {
     int col;
     for (row = 0; row < nbrow; row ++)
     {
+        Color -= 1;
         for (col = 0; col < nbcol; col ++)
         {
             if (Color == 0)
             {
-                SDL_SetRenderDrawColor(renderer, 255, 100, 100, 255);
+                SDL_SetRenderDrawColor(renderer, 0, 0, 121, 255);
                 Color = 1;
             }
             else
             {
-                SDL_SetRenderDrawColor(renderer, 255, 200, 200, 255);
+                SDL_SetRenderDrawColor(renderer, 0, 0, 56, 255);
                 Color = 0;
             }
 
-            SDL_Rect rectangle;
-            rectangle.w = 30;
-            rectangle.h = 30;
-            rectangle.x = row;
-            rectangle.y = col;
+            SDL_Rect rectangle = {row * SNAKE_SIZE, col * SNAKE_SIZE, SNAKE_SIZE, SNAKE_SIZE};
 
             SDL_RenderFillRect(renderer, &rectangle);
         }

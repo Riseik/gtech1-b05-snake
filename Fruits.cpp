@@ -1,5 +1,5 @@
 #include "Fruits.hpp"
-#include "Snake.hpp"
+#include "constants.h"
 
 Fruits::Fruits() {
     this->RandX();
@@ -19,12 +19,12 @@ int Fruits::GetY() {
 }
 
 int Fruits::RandX() {
-    this->xf = rand() % 600;
+    this->xf = (rand() % (WIDTH / SNAKE_SIZE)) * SNAKE_SIZE;
     return xf;
 }
 
 int Fruits::RandY() {
-    this->yf = rand() % 480;
+    this->yf = (rand() % (HEIGHT / SNAKE_SIZE)) * SNAKE_SIZE;
     return yf;
 }
 

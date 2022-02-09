@@ -2,13 +2,14 @@
 #include "Snake.hpp"
 #include "Playground.hpp"
 #include "Fruits.hpp"
+#include "constants.h"
 #include <SDL2/SDL.h>
 
 int main (void) {
     MainSDLWindow sdlwin;
     Fruits* fr = new Fruits();
     Snake* sn = new Snake(WIDTH / 2, HEIGHT / 2, UP);
-    //Playground* pg;
+    Playground* pg = new Playground();
     SDL_Event event;
 
     int frame_rate = 122 ;
@@ -31,6 +32,7 @@ int main (void) {
                 playing = 0;
             }    
         }
+        pg->Init(WIDTH / SNAKE_SIZE, HEIGHT / SNAKE_SIZE, renderer);
         if(fr->GetX() == sn->GetHead()->GetX() && fr->GetY() == sn->GetHead()->GetY()) {
             fr->RandX();
             fr->RandY();
@@ -41,7 +43,7 @@ int main (void) {
         sn->Draw(renderer);
         playing = sn->Collide();
         
-        //pg->Init(WIDTH / SNAKE_SIZE, HEIGHT / SNAKE_SIZE, renderer);
+        
         SDL_RenderPresent(renderer);
         Uint32 frame_time_interval = SDL_GetTicks() - frame_time_start;
         if (frame_time_interval < frame_rate)

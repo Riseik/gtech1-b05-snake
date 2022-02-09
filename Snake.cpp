@@ -1,4 +1,5 @@
 #include "Snake.hpp"
+#include "constants.h"
 
 Segment::Segment(int x, int y, Direction dir, Segment *next)
 {
@@ -39,22 +40,22 @@ int Segment::GetY()
 
 int Segment::AddX()
 {
-    return x += 20;
+    return x += SNAKE_SIZE;
 }
 
 int Segment::AddY()
 {
-    return y += 20;
+    return y += SNAKE_SIZE;
 }
 
 int Segment::RemX()
 {
-    return x -= 20;
+    return x -= SNAKE_SIZE;
 }
 
 int Segment::RemY()
 {
-    return y -= 20;
+    return y -= SNAKE_SIZE;
 }
 
 Snake::Snake(int x, int y, Direction dir)
