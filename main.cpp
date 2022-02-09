@@ -6,18 +6,21 @@
 #include <SDL2/SDL.h>
 
 int main (void) {
+    int lenght = 1;
+    
     MainSDLWindow sdlwin;
     Fruits* fr = new Fruits();
-    Snake* sn = new Snake(WIDTH / 2, HEIGHT / 2, UP);
+    Snake* sn = new Snake(WIDTH / 2, HEIGHT / 2, UP, lenght);
+    Segment* seg;
     Playground* pg = new Playground();
     SDL_Event event;
 
     int frame_rate = 122 ;
 
-    int playing = 1;  
+    int playing = 1;
     
      
-    sdlwin.Init("Snake", 600, 480);
+    sdlwin.Init("Snake", WIDTH, HEIGHT);
     
     SDL_Renderer* renderer = sdlwin.GetRenderer();
     do{
@@ -34,6 +37,11 @@ int main (void) {
         }
         pg->Init(WIDTH / SNAKE_SIZE, HEIGHT / SNAKE_SIZE, renderer);
         if(fr->GetX() == sn->GetHead()->GetX() && fr->GetY() == sn->GetHead()->GetY()) {
+            Segment* create = sn->GetHead();
+            while(create != NULL){
+                create = create->GetNext();
+            }
+            Segment* next = new Segment(seg->GetX(), seg->GetY(), seg->GetDir(), NULL);
             fr->RandX();
             fr->RandY();
         }

@@ -1,4 +1,5 @@
 #include "Fruits.hpp"
+#include "Snake.hpp"
 #include "constants.h"
 
 Fruits::Fruits() {

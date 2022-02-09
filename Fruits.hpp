@@ -9,7 +9,6 @@ public:
   int RandX();
   int RandY();
   void Draw(SDL_Renderer *renderer);
-  int Rand();
 private:
   SDL_Renderer *renderer;
   int xf;

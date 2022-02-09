@@ -1,1 +1,54 @@
-# gtech1-b05-snake
+#+title: Projet#7 #gtech1-b05-snake en C++ sous Linux 
+
+** Participant du projet 
+ - Ethan Maillard : https://github.com/Riseik
+ - Keryan Lucas : https://github.com/Kurlox
+ - Kévin Terrisson : https://github.com/KevinTerrisson
+ 
+** Qu'est-ce qu'un snake ? :
+  Le jeu snake est un jeu où le joueur incarne un serpent glouton voulant manger des fruit à tout prix. Seulement ces dernier le font s'allonger, 
+  devenant de plus en plus long il finit par se gêner. Cette gène ne le dérange pas plus que ça et continue sa course vers la nourriture jusqu’à se marcher 
+  dessus et mourir.
+
+** Outils à installer
+  #+BEGIN_SRC sh
+    sudo apt-get update
+    sudo apt-get install man make g++ libsdl2-dev libsdl2-image-dev install x11-utils
+  #+END_SRC$
+  
+ - Utilisation:
+
+ - Configuration permamente, *à faire une seule fois*:
+
+  #+BEGIN_SRC sh
+   echo "export DISPLAY=:0" >> ~/.bashrc
+   source ~/.bashrc
+  #+END_SRC
+  
+** Comment lancer le jeu ? :
+  - Pour lancer le jeu, il faut compiler et lancer le jeu avec la commande suivante :
+    #+BEGIN_SRC sh 
+    g++ main.cpp MainSDLWindow.cpp Snake.cpp -lSDL2 -o snake && DYSPLAY=:0 ./snake
+    #+END_SRC
+  - Ou faire les commandes séparrément et lancer le jeu avec la comande :
+    =./main=
+    
+** Comment jouer ? :
+  Pour jouer à ce jeu, nous utilisons les fleches directionnelle du clavier :
+    - Nous utilisons la flèche droite , pour aller vers la droite de l'écran
+    - Nous utilisons la flèche gauche , pour aller vers la gauche de l'écran
+    - Nous utilisons la flèche bas , pour aller bas la droite de l'écran
+    - Nous utilisons la flèche haut, pour aller vers le haut de l'écran
+    - Quand vous perdez, la fenêtre se ferme, ce qui fait que vous devez relancer le jeu pour pouvoir refaire une partie
+    - /!\ Attention à ne pas toucher les murs car ceux ci vont causer votre perte.
+  
+** Ressources
+*** Langage C++
+ - Wikibook: [[https://fr.wikibooks.org/wiki/Programmation_C++][https://fr.wikibooks.org/wiki/Programmation_C++]]
+ - Référence: https://en.cppreference.com/w/
+
+*** Librairie SDL2
+ - Homepage SDL2: http://libsdl.org/
+ 
+*** Linux version 
+  - version 11.1

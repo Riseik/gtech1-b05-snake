@@ -11,12 +11,13 @@ public:
   void SetDir(Direction dir);
   Direction GetDir();
   Segment* GetNext();
+  void SetNext(Segment* next);
   int GetX();
   int GetY();
   int AddX();
   int AddY();
-  int RemX();
-  int RemY();
+  int SubX();
+  int SubY();
 private:
   Direction dir;
   Segment *next;
@@ -26,18 +27,18 @@ private:
 
 class Snake {
 public:
-  Snake(int x, int y, Direction dir);
+  Snake(int x, int y, Direction dir, int lenght);
   ~Snake();
   Segment* GetHead();
   void keyboard();
   void Move();
-  void Draw(SDL_Renderer* renderer);
   int Collide();
+  void Eat();
+  void Draw(SDL_Renderer* renderer);
 private:
   Segment* head;
-  Segment* tail;
   int x;
   int y;
   int dir;
-  int dirprev;
+  int lenght;
 };

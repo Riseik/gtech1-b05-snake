@@ -21,12 +21,12 @@ int Playground::Init(int nbrow, int nbcol, SDL_Renderer* renderer) {
         {
             if (Color == 0)
             {
-                SDL_SetRenderDrawColor(renderer, 0, 0, 121, 255);
+                SDL_SetRenderDrawColor(renderer, 165, 232, 56, 255);
                 Color = 1;
             }
             else
             {
-                SDL_SetRenderDrawColor(renderer, 0, 0, 56, 255);
+                SDL_SetRenderDrawColor(renderer, 165, 200, 56, 255);
                 Color = 0;
             }
 

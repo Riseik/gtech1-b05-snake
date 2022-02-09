@@ -6,7 +6,7 @@ Segment::Segment(int x, int y, Direction dir, Segment *next)
     this->x = x;
     this->y = y;
     this->dir = dir;
-    this->next = next;
+    this->next = NULL;
 }
 
 Segment::~Segment()
@@ -26,6 +26,10 @@ Direction Segment::GetDir()
 Segment *Segment::GetNext()
 {
     return next;
+}
+
+void Segment::SetNext(Segment* next){
+    this->next = next;
 }
 
 int Segment::GetX()
@@ -48,17 +52,17 @@ int Segment::AddY()
     return y += SNAKE_SIZE;
 }
 
-int Segment::RemX()
+int Segment::SubX()
 {
     return x -= SNAKE_SIZE;
 }
 
-int Segment::RemY()
+int Segment::SubY()
 {
     return y -= SNAKE_SIZE;
 }
 
-Snake::Snake(int x, int y, Direction dir)
+Snake::Snake(int x, int y, Direction dir, int lenght)
 {
     head = new Segment(x, y, dir, NULL);
 }
@@ -108,24 +112,28 @@ void Snake::keyboard()
 
 void Snake::Move()
 {
-    switch (head->GetDir())
-    {
+    Segment* tmp = head;
+    while(tmp != NULL){
+        switch (tmp->GetDir())
+        {
 
-    case UP:
-        head->RemY();
-        break;
+        case UP:
+            tmp->SubY();
+            break;
 
-    case DOWN:
-        head->AddY();
-        break;
+        case DOWN:
+            tmp->AddY();
+            break;
 
-    case LEFT:
-        head->RemX();
-        break;
+        case LEFT:
+            tmp->SubX();
+            break;
 
-    case RIGHT:
-        head->AddX();
-        break;
+        case RIGHT:
+            tmp->AddX();
+            break;
+        }
+        tmp = tmp->GetNext();
     }
 }
 
@@ -143,7 +151,11 @@ int Snake::Collide() {
 
 void Snake::Draw(SDL_Renderer *renderer)
 {
-    SDL_SetRenderDrawColor(renderer, 0, 125, 0, 255);
-    SDL_Rect rect = {this->head->GetX(), this->head->GetY(), SNAKE_SIZE, SNAKE_SIZE};
-    SDL_RenderFillRect(renderer, &rect);
+    Segment* tmp = head;
+    while(tmp != NULL){
+        SDL_SetRenderDrawColor(renderer, 65, 22, 247, 255);
+        SDL_Rect rect = {tmp->GetX(), tmp->GetY(), SNAKE_SIZE, SNAKE_SIZE};
+        SDL_RenderFillRect(renderer, &rect);
+        tmp = tmp->GetNext();
+    }
 }

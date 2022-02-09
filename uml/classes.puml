@@ -1,0 +1,116 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Fruits {
+	+Fruits()
+	+~Fruits()
+	-renderer : SDL_Renderer*
+	+GetX() : int
+	+GetY() : int
+	+RandX() : int
+	+RandY() : int
+	-xf : int
+	-yf : int
+	+Draw(SDL_Renderer* renderer) : void
+}
+
+
+class MainSDLWindow {
+	+MainSDLWindow()
+	+~MainSDLWindow()
+	+GetRenderer() : SDL_Renderer*
+	-renderer : SDL_Renderer*
+	-window : SDL_Window*
+	+Init(const char* winname, int width_, int height_) : int
+}
+
+
+class Playground {
+	+Playground()
+	+~Playground()
+	+GetRenderer() : SDL_Renderer*
+	+Init(int nbrow, int nbcol, SDL_Renderer* renderer) : int
+	-nbcol : int
+	-nbrow : int
+}
+
+
+class Segment {
+	+Segment(int x, int y, Direction dir, Segment* next)
+	+~Segment()
+	-dir : Direction
+	+GetNext() : Segment*
+	-next : Segment*
+	+AddX() : int
+	+AddY() : int
+	+GetDir() : int
+	+GetX() : int
+	+GetY() : int
+	+SubX() : int
+	+SubY() : int
+	-x : int
+	-y : int
+	+SetDir(Direction dir) : void
+	+SetNext(Segment* next) : void
+}
+
+
+class Snake {
+	+Snake(int x, int y, Direction dir, int lenght)
+	+~Snake()
+	+GetHead() : Segment*
+	-head : Segment*
+	+Collide() : int
+	-dir : int
+	-lenght : int
+	-x : int
+	-y : int
+	+Draw(SDL_Renderer* renderer) : void
+	+Eat() : void
+	+Move() : void
+	+keyboard() : void
+}
+
+
+enum Direction {
+	DOWN
+	LEFT
+	RIGHT
+	UP
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+.Segment *-- .Direction
+
+
+.Segment o-- .Segment
+
+
+.Snake o-- .Segment
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
+
