@@ -31,7 +31,7 @@
     g++ main.cpp MainSDLWindow.cpp Snake.cpp -lSDL2 -o snake && DYSPLAY=:0 ./snake
     #+END_SRC
   - Et lancer  le jeu avec la comande :
-    =./main=
+    =./snake=
     
 ** Comment jouer ? :
   Pour jouer à ce jeu, nous utilisons les fleches directionnelle du clavier :
