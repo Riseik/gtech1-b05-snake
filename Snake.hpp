@@ -1,5 +1,9 @@
 #include <SDL2/SDL.h>
 
+#define HEIGHT 480
+#define WIDTH 600
+#define SNAKE_SIZE 20
+
 typedef enum { 
     UP, DOWN, LEFT, RIGHT
 } Direction;
