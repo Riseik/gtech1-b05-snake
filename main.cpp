@@ -7,7 +7,7 @@ int main (void) {
     MainSDLWindow sdlwin;
     SDL_Renderer* renderer;
     //Fruits* fr;
-    Snake* sn = new Snake(WIDTH / 2, HEIGHT / 2, UP);
+    //Snake* sn = new Snake(WIDTH / 2, HEIGHT / 2, UP);
     Playground* pg;
     SDL_Event event;
 
@@ -16,7 +16,7 @@ int main (void) {
     int playing = 1;
     pg->Init(renderer);  
      
-    sdlwin.Init("Snake", 600, 480);
+    //sdlwin.Init("Snake", 600, 480);
     
     do{
 
@@ -29,9 +29,10 @@ int main (void) {
                 playing = 0;
             }    
         }
-        sn->keyboard();
+       /* sn->keyboard();
         sn->Move();
-        sn->Draw(renderer);
+        sn->Draw(renderer); */
+        pg->Init(renderer);
 
         Uint32 frame_time_interval = SDL_GetTicks() - frame_time_start;
         if (frame_time_interval < frame_rate)
