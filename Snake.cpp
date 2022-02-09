@@ -77,20 +77,31 @@ void Snake::keyboard()
 
     if (keystates[SDL_SCANCODE_UP])
     {
-        head->SetDir(UP);
-        printf("1\n");
+        if(head->GetDir() != DOWN)
+        {
+            head->SetDir(UP);
+        }
     }
     if (keystates[SDL_SCANCODE_DOWN])
     {
-        head->SetDir(DOWN);
+        if(head->GetDir() != UP)
+        {
+            head->SetDir(DOWN);
+        }
     }
     if (keystates[SDL_SCANCODE_LEFT])
     {
-        head->SetDir(LEFT);
+        if(head->GetDir() != RIGHT)
+        {
+            head->SetDir(LEFT);
+        }
     }
     if (keystates[SDL_SCANCODE_RIGHT])
     {
-        head->SetDir(RIGHT);
+        if(head->GetDir() != LEFT)
+        {
+            head->SetDir(RIGHT);
+        }
     }
 }
 
@@ -117,12 +128,21 @@ void Snake::Move()
     }
 }
 
+int Snake::Collide() {
+    if (head->GetX() < 0 || 
+        head->GetX() > WIDTH ||
+        head->GetY() < 0 ||
+        head->GetY() > HEIGHT) {
+            return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
 void Snake::Draw(SDL_Renderer *renderer)
 {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 200, 100, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 125, 0, 255);
     SDL_Rect rect = {this->head->GetX(), this->head->GetY(), SNAKE_SIZE, SNAKE_SIZE};
     SDL_RenderFillRect(renderer, &rect);
-    SDL_RenderPresent(renderer);
 }

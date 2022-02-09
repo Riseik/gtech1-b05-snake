@@ -9,7 +9,7 @@ Playground::~Playground() {
     
 }
 
-int Playground::Init(SDL_Renderer* renderer) {
+int Playground::Init(int nbrow, int nbcol, SDL_Renderer* renderer) {
     int Color = 0;
     int row;
     int col;

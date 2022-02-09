@@ -36,6 +36,7 @@ public:
   void keyboard();
   void Move();
   void Draw(SDL_Renderer* renderer);
+  int Collide();
 private:
   Segment* head;
   Segment* tail;

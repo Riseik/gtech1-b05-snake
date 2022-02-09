@@ -2,11 +2,16 @@
 
 class Fruits{
 public:
-  Fruits(int x, int y);
+  Fruits();
   ~Fruits();
   int GetX();
   int GetY();
+  int RandX();
+  int RandY();
+  void Draw(SDL_Renderer *renderer);
+  int Rand();
 private:
-  int x;
-  int y;
-}
+  SDL_Renderer *renderer;
+  int xf;
+  int yf;
+};

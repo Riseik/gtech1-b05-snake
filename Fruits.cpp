@@ -1,8 +1,9 @@
 #include "Fruits.hpp"
+#include "Snake.hpp"
 
-Fruits::Fruits(int x, int y) {
-    this->x = x;
-    this->y = y;
+Fruits::Fruits() {
+    this->RandX();
+    this->RandY();
 }
 
 Fruits::~Fruits() {
@@ -10,9 +11,25 @@ Fruits::~Fruits() {
 }
 
 int Fruits::GetX() {
-    return x;
+    return xf;
 }
 
 int Fruits::GetY() {
-    return y;
+    return yf;
+}
+
+int Fruits::RandX() {
+    this->xf = rand() % 600;
+    return xf;
+}
+
+int Fruits::RandY() {
+    this->yf = rand() % 480;
+    return yf;
+}
+
+void Fruits::Draw(SDL_Renderer *renderer) {
+    SDL_SetRenderDrawColor(renderer, 176, 0, 0, 255);
+    SDL_Rect rect = {xf, yf, SNAKE_SIZE, SNAKE_SIZE};
+    SDL_RenderFillRect(renderer, &rect);
 }
