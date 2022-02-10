@@ -28,7 +28,7 @@
 ** Comment lancer le jeu ? :
   - Pour lancer le jeu, il faut compiler et lancer le jeu avec la commande suivante :
     #+BEGIN_SRC sh 
-    g++ main.cpp MainSDLWindow.cpp Snake.cpp -lSDL2 -o snake && DYSPLAY=:0 ./snake
+    g++ main.cpp MainSDLWindow.cpp Snake.cpp Playground.cpp Fruits.cpp -lSDL2 -o snake && DYSPLAY=:0 ./main
     #+END_SRC
   - Ou faire les commandes séparrément et lancer le jeu avec la comande :
     =./main=
@@ -40,7 +40,7 @@
     - Nous utilisons la flèche bas , pour aller bas la droite de l'écran
     - Nous utilisons la flèche haut, pour aller vers le haut de l'écran
     - Quand vous perdez, la fenêtre se ferme, ce qui fait que vous devez relancer le jeu pour pouvoir refaire une partie
-    - /!\ Attention à ne pas toucher les murs car ceux ci vont causer votre perte.
+    - /!\ Attention à ne pas toucher les murs car ceux-ci vont causer votre perte.
   
 ** Ressources
 *** Langage C++
